@@ -43,7 +43,7 @@ class Console
 
         if ($request->isJson() || $request->isAjax()) {
             return false;
-        } elseif (!empty($contentType) && strpos($contentType, 'html') === false) {
+        } elseif (!empty($contentType) && str_contains($contentType, 'html') === false) {
             return false;
         } elseif ($response->getCode() == 204) {
             return false;
@@ -86,7 +86,7 @@ class Console
                     $trace[$title] = $info;
                     break;
                 default: // 调试信息
-                    if (strpos($name, '|')) {
+                    if (str_contains($name, '|')) {
                         // 多组信息
                         $names  = explode('|', $name);
                         $result = [];
